@@ -8,7 +8,7 @@
 </template>
 
 <script lang='ts'>
-import BarJson from '../assets/data/BarJson';
+import BarJson from '../../assets/data/BarJson';
 import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
 export default class TabBar extends Vue {

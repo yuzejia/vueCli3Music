@@ -1,0 +1,470 @@
+@ft-family: "Microsoft Yahei", "Hiragino Sans GB", "Helvetica Neue", Helvetica, tahoma, arial, "WenQuanYi Micro Hei", Verdana, sans-serif, "\5B8B\4F53";
+@fc-333: #333;
+@fc-666: #666;
+@fc-999: #999;
+@fc-fff: #fff;
+@fc-red: red;
+@fc-yellow: #FF9900;
+@fc-white: white;
+@border-e5: #e5e5e5;
+@fc-blue: #148cf1;
+@bg-blue: #268efc;
+@fc-green: #78b830;
+@bg-light-blue: #e9f3ff;
+@bg-light-grey: #f5f5f5;
+@bg-deep-grey: #c4c4c4;
+@bg-white:#ffffff;
+@bg-cyan:#0ca5c9;
+@bg-gradient-start:#286efc;
+@bg-gradient-top:#bedcfd;
+@bg-gradient-center:#85bffd;
+@bg-horizontal-start:#2F92FC;
+@bg-horizontal-middle:#419CFC;
+@bg-horizontal-end:#7ABAFC;
+@b2b2b2:#b2b2b2;
+
+@rex:1rem/75; // 设计稿/10
+@fc-deep-blue:#268EFC;
+@fc-light-grey:#999999;
+
+
+/*   当有需要时进行释放
+
+ul,li{list-style: none;}
+a{
+  color:#333;
+  text-decoration: none;
+  display: inline-block;
+}
+a:hover {
+  text-decoration: none;
+}
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+html input[disabled]{
+  background-color: transparent;
+}*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/*字体相关样式*/
+body {
+  font-family: @ft-family;
+}
+
+.fw-bold {
+  font-weight: bold;
+}
+
+.fw-normal {
+  font-weight: normal;
+}
+
+li {
+  list-style: none;
+}
+
+/*color*/
+.fc-000 {
+  color: #000;
+}
+
+.fc-333 {
+  color: #333
+}
+
+.fc-666 {
+  color: #666
+}
+
+.fc-888 {
+  color: #888
+}
+
+.fc-999 {
+  color: #999
+}
+
+.fc-white {
+  color: white;
+}
+
+.fc-333 {
+  color: @fc-333;
+}
+
+.fc-666 {
+  color: @fc-666;
+}
+
+.fc-999 {
+  color: @fc-999;
+}
+
+.fc-red {
+  color: @fc-red;
+}
+
+.fc-yellow {
+  color: @fc-yellow;
+}
+
+.fc-white {
+  color: @fc-white;
+}
+
+.fc-blue {
+  color: @fc-blue;
+}
+
+.fc-green {
+  color: @fc-green;
+}
+
+.fc-deep-blue {
+  color: @fc-deep-blue;
+}
+
+.fc-light-grey {
+  color: @fc-light-grey;
+}
+
+.fc-b2b2b2{
+  color: @b2b2b2;
+}
+
+.fc-fff {
+  color: @fc-fff;
+}
+
+.fc-ad {
+  color: #adadad;
+}
+
+.fc-cyan {
+  color: #02c9bf;
+}
+
+.fc-fy {
+  color: #f6566e;
+}
+
+.fw-bold {
+  font-weight: bold;
+}
+
+.marginTop {
+  margin: 0.2rem 0;
+}
+
+;
+/*  font-size : fs-xx */
+.fs-generate(58);
+
+.fs-generate(@n,@i:12) when (@n>=@i) {
+  .fs-@{i} {
+    font-size: @i*@rex;
+  }
+  .fs-generate(@n, (@i+2));
+}
+
+/* -------------mixin---------------*/
+
+// flex
+.display-flex {
+  //display: box;              /* OLD - Android 4.4- */
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Chrome */
+  display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.flex-row(@direction:row,@justify:center,@align:stretch) {
+  .display-flex();
+
+  -webkit-flex-direction: @direction;
+  -moz-flex-direction: @direction;
+  -ms-flex-direction: @direction;
+  -o-flex-direction: @direction;
+  flex-direction: @direction;
+  justify-content: @justify;
+  -webkit-box-align: center;
+  /* 12版 */
+  -webkit-align-items: @align;
+  -moz-align-items: @align;
+  -ms-align-items: @align;
+  -o-align-items: @align;
+  align-items: @align;
+}
+
+.flex(@arguments) {
+  -webkit-flex: @arguments; /* Chrome */
+  -webkit-box-flex: @arguments;
+  -ms-flex: @arguments; /* IE 10 */
+  -moz-box-flex: @arguments;
+  -o-box-flex: @arguments;
+  box-flex: @arguments;
+  -moz-flex: @arguments;
+  -o-flex: @arguments;
+  flex: @arguments;
+}
+
+.flex-wrap{
+  -webkit-flex-wrap: wrap;
+  -webkit-box-lines:multiple;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  flex-wrap:wrap;
+}
+
+// position
+.position(@type,@top:0,@left:0,@bottom:0,@right:0) {
+  position: @type;
+  top: @top;
+  left: @left;
+  bottom: @bottom;
+  right: @right;
+}
+
+// font
+.font(@size,@weight:normal,@color:#000) {
+  font-size: @size*@rex;
+  font-weight: @weight;
+  color: @color;
+}
+
+// 尺寸
+.line-and-height(@h) {
+  line-height: @h*@rex;
+  height: @h*@rex;
+}
+
+// bg-icon
+.bg-icon(@url,@repeat:no-repeat,@left:0,@top:0,@height:auto,@width:auto) {
+  background: url(@url) @repeat @left @top e('/') @height @width;
+}
+
+// border
+.border(@w:1px,@s:solid,@c:@border-e5,@direction:fales) when (@direction= fales) {
+  border: @w @s @c;
+}
+
+.border(@w:1px,@s:solid,@c:@border-e5,@direction:fales) when not (@direction=fales) {
+  border-@{direction}: @w @s @c;
+}
+
+/*box-shadow*/
+.box-shadow {
+  box-shadow: 0 0.046rem 0.093rem #ddd;
+  margin-bottom: 0.312rem;
+}
+
+/*强制换行*/
+.warp-text {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/*圆圈 i  */
+.info-icon {
+  border-radius: 50%;
+  color: #fff;
+  background: #BBB;
+  text-align: center;
+  font-size: 0.32rem;
+  line-height: 0.35rem;
+  width: 0.35rem;
+  height: 0.35rem;
+}
+
+// 背景图渐变
+.bg-gradient-mixin(@start,@center,@top) {
+  background: #fff;
+  background: -webkit-linear-gradient(@start, @center, @top); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(@start, @center, @top); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(@start, @center, @top); /* Firefox 3.6 - 15 */
+  background: linear-gradient(@start, @center, @top); /* 标准的语法 */
+}
+
+.bg-horizon-gradient(@start,@center,@top) {
+  background: #fff;
+  background: -webkit-linear-gradient(left, @start, @center, @top); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, @start, @center, @top); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, @start, @center, @top); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, @start, @center, @top); /* 标准的语法 */
+}
+
+.bg-gradient {
+  .bg-gradient-mixin(@bg-gradient-start, @bg-gradient-center, @bg-gradient-top);
+  background-attachment: fixed;
+}
+
+.bg-horizontal-gradient {
+  .bg-horizon-gradient(@bg-horizontal-start, @bg-horizontal-middle, @bg-horizontal-end);
+  background-attachment: fixed;
+}
+
+.bg-blue {
+  background-color: @bg-blue;
+}
+
+.bg-cyan {
+  background-color: @bg-cyan;
+}
+
+.bg-correct {
+  background-color: #d4e8ef;
+}
+
+.bg-light-blue {
+  background-color: @bg-light-blue;
+}
+
+.bg-light-grey {
+  background-color: @bg-light-grey;
+}
+
+.bg-white {
+  background-color: @bg-white;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.btn-blue {
+  background-color: #268EFC;
+}
+
+.btn-blue:active {
+  background-color: #0966c7;
+}
+
+.btn-white {
+  background-color: #ffffff;
+  border: 1px solid #268EFC;
+}
+
+.btn-white:active {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn-white-disabled {
+  background-color: #e4dada;
+  border: 1px solid #268EFC;
+}
+
+.btn-cyan {
+  background-color: #02c9bf;
+}
+
+.btn-cyan:active {
+  background-color: #0ca5c9;
+}
+
+.btn-light-blue {
+  background-color: @bg-light-blue;
+}
+
+.btn-light-blue:active {
+  background-color: #a8c9f1;
+}
+
+.btn-deep-grey {
+  background-color: @bg-deep-grey;
+}
+
+.btn-deep-grey:active {
+  background-color: #9ea7a7;
+}
+
+.btn-border-radius {
+  border-radius: 20*@rex;
+}
+
+.btn-padding-border-radius {
+  border-radius: 40*@rex;
+}
+
+input[disabled] {
+  background: none;
+  color: @fc-light-grey;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.btn-padding {
+  padding: 5*@rex 0;
+}
+
+.display-inline-block {
+  display: inline-block;
+}
+
+.letter-space {
+  letter-spacing: 3*@rex;
+}
+
+.ov-hidden {
+  overflow: hidden;
+}
+
+.transform-translate(@x:0,@y:0) {
+  transform: translate(@x, @y);
+  -ms-transform: translate(@x, @y);
+  -moz-transform: translate(@x, @y);
+  -webkit-transform: translate(@x, @y);
+  -o-transform: translate(@x, @y);
+}
+
+.swiper-container-patient {
+  .swiper-pagination {
+    bottom: 100*@rex !important;
+    left: 0;
+    width: 100%;
+  }
+  .patient-bullet {
+    width: 30*@rex;
+    height: 8*@rex;
+    display: inline-block;
+    margin-right: 10*@rex;
+    background: #000;
+    opacity: .2;
+  }
+  /*  .patient-bullet-active{
+      background: #268EFC;
+      opacity: 1;
+    }*/
+
+}
+
+
+
+
+

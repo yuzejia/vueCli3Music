@@ -1,6 +1,9 @@
-import Vue from 'vue'
-import App from './App.vue'
-import Router from './router'
+import Vue from 'vue';
+import App from './App.vue';
+import Router from './router';
+import 'iview/dist/styles/iview.css';
+import './assets/less/base-less.less';
+import 'amfe-flexible';
 Vue.config.productionTip = false
 
 
