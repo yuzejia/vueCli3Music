@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import Router from './router';
+import './core/services/hint';
 import 'iview/dist/styles/iview.css';
 import './assets/less/base-less.less';
 import 'amfe-flexible';

@@ -1,26 +1,16 @@
 
 import Vue from 'vue'
-import iView from 'iview'
 import VueRouter from 'vue-router'
 import Index from './components/home/index.vue'
-import Logn from './components/home/logn.vue'
+import Enter from './components/home/enter.vue'
 Vue.use(VueRouter)
 
+// 定义路由
 const router = new VueRouter({
     routes: [
-        { path: '/', component: Logn},
+        { path: '/', component: Enter},
         { path: '/Index', component: Index},
     ]
   });
-
-
-  router.beforeEach((to, from, next) => {
-    iView.LoadingBar.start();
-    next();
-});
-
-router.afterEach(route => {
-    iView.LoadingBar.finish();
-});
 
 export default router;
