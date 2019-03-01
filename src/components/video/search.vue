@@ -27,5 +27,6 @@ export default class Search extends Vue {
     padding: 0.1rem 0.2rem;
     padding-bottom: 0.2rem;
     box-shadow: 0 5px 12px #eee;
+  
 }
 </style>

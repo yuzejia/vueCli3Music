@@ -5,8 +5,10 @@ import './core/services/hint';
 import 'iview/dist/styles/iview.css';
 import './assets/less/base-less.less';
 import 'amfe-flexible';
+import NoInfo from "@/components/share/index"
 Vue.config.productionTip = false
 
+Vue.use(NoInfo)
 
 //new Vue 启动
 

@@ -2,6 +2,7 @@
 <div>
   <Search @seachMsg='search'></Search>
   <SongLIst :SongList='songList'></SongLIst>
+  <NoInfo v-if="songList.length === 0"></NoInfo>
 </div>
 </template>
 
@@ -27,7 +28,7 @@ export default class Index extends Vue {
 
   private songList: Array<Object> = [];
   search(value: string) {
-    this.inSearch.s = value
+    this.inSearch.s = value || ' '
           // 调用加载进度
       Message.loadingShow(this);
       // 发起 请求 歌曲列表
@@ -36,7 +37,6 @@ export default class Index extends Vue {
           Message.loadingHide(this);
           this.$Message.success('获取成功');
           this.songList = data
-          console.log(this.songList)
       })
       .catch((error: any) =>{
           Message.loadingError(this);
