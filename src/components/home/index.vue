@@ -1,7 +1,11 @@
 <template>
-<div>
-  <Search @seachMsg='search'></Search>
-  <SongLIst :SongList='songList'></SongLIst>
+<div clsaa='animated bounceInDown'>
+  <div class="seach">
+  <Search @seachMsg='search' :ShowType='type'></Search>
+  </div>
+  <div class="song_content">
+    <SongLIst :SongList='songList'></SongLIst>
+  </div>
   <NoInfo v-if="songList.length === 0"></NoInfo>
 </div>
 </template>
@@ -24,6 +28,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
   },
 })
 export default class Index extends Vue {
+  private type: boolean = true;
   private inSearch: InSearch = new InSearch();
 
   private songList: Array<Object> = [];
@@ -36,7 +41,9 @@ export default class Index extends Vue {
       .then((data: any) => {
           Message.loadingHide(this);
           this.$Message.success('获取成功');
-          this.songList = data
+          this.songList = data;
+          this.type = false;   // 获取成功
+          console.log(this.type)
       })
       .catch((error: any) =>{
           Message.loadingError(this);
@@ -46,6 +53,16 @@ export default class Index extends Vue {
 }
 </script>
 
-<style scoped>
-    
-</style>
+<style <style lang="less">
+     .seach{
+      width: 100%;
+      position: fixed;
+      top:0;
+      left: 0;
+      height: 1rem;;
+    }
+    .song_content{
+      margin-top: 1.2rem;
+    }
+</style>>
+ 

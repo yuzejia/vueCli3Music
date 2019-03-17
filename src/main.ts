@@ -6,6 +6,10 @@ import 'iview/dist/styles/iview.css';
 import './assets/less/base-less.less';
 import 'amfe-flexible';
 import NoInfo from "@/components/share/index"
+ 
+import 'animate.css' // npm install animate.css --save安装，在引入
+ 
+
 Vue.config.productionTip = false
 
 Vue.use(NoInfo)

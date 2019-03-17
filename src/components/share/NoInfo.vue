@@ -1,5 +1,5 @@
 <template>
-    <div class="Noinfo">
+    <div class="Noinfo animated fadeIn">
         <p>
         <img src="../../assets/img/img-music.png" alt="">
         </p>

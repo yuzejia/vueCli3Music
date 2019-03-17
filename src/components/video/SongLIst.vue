@@ -1,5 +1,5 @@
 <template>
-  <div class="songLIst">
+  <div class="songLIst ">
       <p v-for="(item, index) in SongList" :key="index">
         <span class="name" @click="GoPlay(item)">{{item.name}}</span>
         <span class="pull-right">{{item.singer}}</span>

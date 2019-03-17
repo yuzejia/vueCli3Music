@@ -1,8 +1,15 @@
 <template>
-  <div class="Enter">
-    <p>music</p>
-    <button @click="getSongLIst">获取歌曲列表</button>
-    <p v-for="(item, index) in songList" :key="index">{{item.name}}</p>
+  <div class="Enter animated fadeIn">
+    <div class="top animated fadeInLeft">
+      <p>简</p>
+      <p>乐</p>
+    </div>
+    <div class="content">
+
+    </div>
+    <div class="bottom animated fadeInUp">
+      <p>---<span>music</span>---</p>
+    </div>
   </div>
 </template>
 
@@ -14,26 +21,10 @@ import Message from '@/core/services/message';
 import PathData from '@/assets/data/path_data'
 @Component
 export default class Enter extends Vue {
-  private parm: Object = {key:'579621905',id:'3778678',limit:'5',offset:'10'};
-  private songList: Array<Object> = [];;
    created() {
+     setTimeout(() => {
      this.$router.push(PathData.INDEX)
-   }
-
-  private getSongLIst() {
-      // 调用加载进度
-      Message.loadingShow(this);
-      // 发起 请求 歌曲列表
-      ServerApi.getSongLIst(this.parm)
-      .then((data: any) => {
-          Message.loadingHide(this);
-          this.$Message.success('获取成功');
-          this.songList = data.songs
-      })
-      .catch((error: any) =>{
-          Message.loadingError(this);
-          this.$Message.error(error);
-      })
+     }, 3000)
    }
 
 
@@ -43,10 +34,21 @@ export default class Enter extends Vue {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
   .Enter{
-    text-align: center;
-    padding-top: 2rem;
-    p{
-      font-size: 1rem;
+    height: 100%;
+    padding: 1rem;
+    position: relative;
+    background: #adccff4d;
+    .top{
+      p{
+        font-size: 0.8rem;
+      }
+    }
+    .content{
+      height: 60%;
+    }
+    .bottom{
+      font-size: 0.4rem;
+      text-align: center
     }
   }
 </style>
