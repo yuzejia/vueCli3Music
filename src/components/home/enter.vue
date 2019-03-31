@@ -25,6 +25,7 @@ export default class Enter extends Vue {
      setTimeout(() => {
      this.$router.push(PathData.INDEX)
      }, 3000)
+
    }
 
 

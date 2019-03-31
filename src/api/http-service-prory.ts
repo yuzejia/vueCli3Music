@@ -1,7 +1,7 @@
 import { HttpServiceBase } from '@/api/http-service-base';
 import { ServerHttp } from './http-service';
 import InSearch from '@/core/object/in-search'
-export default class HttpServiceProry {
+export class HttpServiceProry implements HttpServiceBase {
    private static HTTP: string = 'https://api.bzqll.com/music/tencent'; // 服务其地址 tencent 腾讯
 
    constructor() {
@@ -54,18 +54,18 @@ export default class HttpServiceProry {
     */
 
    // 获取 歌单
-   public static getSongLIst(params: any): any {
+   getSongLIst(params: any): any {
       return HttpServiceProry.getHttp(HttpServiceProry.SONG_LIST, params)
 
    }
       // 获取 歌单
-   public static getSongLrc(url: string): any {
+   getSongLrc(url: string): any {
    return HttpServiceProry.getHttp(url)
 
    }
 
    // 搜索 歌单
-   public static getSeach(params: InSearch): any {
+   getSeach(params: InSearch): any {
       alert(111111111111)
       const inSearch: InSearch = new InSearch();
       inSearch.key = '579621905'
@@ -77,7 +77,7 @@ export default class HttpServiceProry {
    }
 
    // 搜索 歌单
-   public static getSongDetails(id: string): any {
+   getSongDetails(id: string): any {
       const songDetails = {
          key: '',
          id: ''

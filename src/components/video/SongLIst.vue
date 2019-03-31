@@ -10,9 +10,8 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import ServerApi from '@/api/server-api'
 import Message from '@/core/services/message'
-
+import ServerApi from '@/api/server-api'
 @Component
 export default class SongLIst extends Vue {
   @Prop() private SongList!: Array<Object>;
@@ -27,12 +26,16 @@ export default class SongLIst extends Vue {
       .then((data: any) => {
           Message.loadingHide(this);
           this.$Message.success('获取成功');
-          console.log(data)
+          window.console.log(data)
+        
       })
       .catch((error: any) =>{
           Message.loadingError(this);
           this.$Message.error(error);
       })
+
+
+      this.$router.push({path: 'songDetails',query:{id: item.id}})
     }
 }
 </script>

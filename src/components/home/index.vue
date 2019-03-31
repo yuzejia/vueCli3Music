@@ -43,7 +43,7 @@ export default class Index extends Vue {
           this.$Message.success('获取成功');
           this.songList = data;
           this.type = false;   // 获取成功
-          console.log(this.type)
+          window.console.log(this.type)
       })
       .catch((error: any) =>{
           Message.loadingError(this);
@@ -53,7 +53,7 @@ export default class Index extends Vue {
 }
 </script>
 
-<style <style lang="less">
+<style lang="less">
      .seach{
       width: 100%;
       position: fixed;

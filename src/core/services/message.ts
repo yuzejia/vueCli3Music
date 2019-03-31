@@ -25,3 +25,12 @@ export default class Message extends Vue {
         _this.$Loading.error();  // 进度条错误提示关闭
     }
 }
+
+declare module "vue/types/vue" {
+    interface Vue {
+        /**
+         * 全局提示
+         */
+        Message: Message;
+    }
+  }
