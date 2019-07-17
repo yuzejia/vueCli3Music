@@ -1,8 +1,9 @@
 import { HttpServiceBase } from '@/api/http-service-base';
-import { ServerHttp } from './http-service';
+import { HttpService } from './http-service';
 import InSearch from '@/core/object/in-search'
+import Info from '@/core/object/info';
 export default class HttpServiceProry {
-   private static HTTP: string = 'https://api.bzqll.com/music/tencent'; // 服务其地址 tencent 腾讯
+   private static HTTP: string = 'https://v1.itooi.cn/music/tencent'; // 服务其地址 tencent 腾讯
 
    constructor() {
    }
@@ -33,10 +34,11 @@ export default class HttpServiceProry {
 
    private static getHttp(url: string, params?: any): any {
       this.num++;
+
       return new Promise((resolve, reject) => {
          HttpServiceProry.num > 1 ?
             reject(HttpServiceProry.messageErr) :
-            ServerHttp.get(this.HTTP + url, params)
+            HttpService.get(this.HTTP + url, params)
             .then((res: any) => {
                HttpServiceProry.init()
                res.result === HttpServiceProry.success ? resolve(res.data) : reject(res.msg);
@@ -66,7 +68,6 @@ export default class HttpServiceProry {
 
    // 搜索 歌单
    public static getSeach(params: InSearch): any {
-      alert(111111111111)
       const inSearch: InSearch = new InSearch();
       inSearch.key = '579621905'
       inSearch.s = params.s;
@@ -78,13 +79,10 @@ export default class HttpServiceProry {
 
    // 搜索 歌单
    public static getSongDetails(id: string): any {
-      const songDetails = {
-         key: '',
-         id: ''
-      }
-      songDetails.key = '579621905'
-      songDetails.id = id;
-      return HttpServiceProry.getHttp(HttpServiceProry.SONG, songDetails)
+      const info = new Info();
+      info.key = '579621905'
+      info.id = id;
+      return HttpServiceProry.getHttp(HttpServiceProry.SONG, info)
    }
 
 }

@@ -1,5 +1,5 @@
 import { HttpServiceBase } from '@/api/http-service-base';
-import { ServerHttp } from './http-service';
+import { HttpService } from './http-service';
 import InSearch from '@/core/object/in-search'
 export class HttpServiceProry implements HttpServiceBase {
    private static HTTP: string = 'https://api.bzqll.com/music/tencent'; // 服务其地址 tencent 腾讯
@@ -36,7 +36,7 @@ export class HttpServiceProry implements HttpServiceBase {
       return new Promise((resolve, reject) => {
          HttpServiceProry.num > 1 ?
             reject(HttpServiceProry.messageErr) :
-            ServerHttp.get(this.HTTP + url, params)
+            HttpService.get(this.HTTP + url, params)
             .then((res: any) => {
                HttpServiceProry.init()
                res.result === HttpServiceProry.success ? resolve(res.data) : reject(res.msg);
@@ -66,7 +66,6 @@ export class HttpServiceProry implements HttpServiceBase {
 
    // 搜索 歌单
    getSeach(params: InSearch): any {
-      alert(111111111111)
       const inSearch: InSearch = new InSearch();
       inSearch.key = '579621905'
       inSearch.s = params.s;

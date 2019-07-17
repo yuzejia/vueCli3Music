@@ -126,12 +126,8 @@ import  axios  from 'axios';
   }
   
   
-  /**
-  * 下面是获取数据的接口
-  *
-  */
   
-export class ServerHttp{
+export class HttpService{
 
     // get请求
   public static get(url: string,paramObj: {} | undefined): object | any {

@@ -21,7 +21,9 @@ import Message from '@/core/services/message';
 import PathData from '@/assets/data/path_data'
 @Component
 export default class Enter extends Vue {
+
    created() {
+     
      setTimeout(() => {
      this.$router.push(PathData.INDEX)
      }, 3000)

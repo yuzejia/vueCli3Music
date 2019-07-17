@@ -1,4 +1,6 @@
-export default class InSearch {
+import Info from './info';
+
+export default class InSearch extends Info {
     key: string | undefined;
     s: string | undefined;
     type: string | undefined;
